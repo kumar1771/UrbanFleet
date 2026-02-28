@@ -1,0 +1,11 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: Config-Server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/kumar1771/UrbenFleet-ConfigRepo.git
+          default-label: main
