@@ -10,6 +10,10 @@
         <option value="$PROJECT_DIR$/Config-Server/pom.xml" />
         <option value="$PROJECT_DIR$/Restorent-service/pom.xml" />
         <option value="$PROJECT_DIR$/Auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Farmer-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Farmer-Goods-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Order-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Ai-Service/pom.xml" />
       </list>
     </option>
   </component>

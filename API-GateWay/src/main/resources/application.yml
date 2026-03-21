@@ -8,7 +8,6 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888
 
-
 #  cloud:
 #    gateway:
 #      discovery:
@@ -24,6 +23,10 @@ spring:
 #          uri: lb://restorent-service
 #          predicates:
 #            - Path=/restaurants/**
+#-id: farmer-service
+#uri: lb://farmer-service
+#predicate:
+#- Path=/farmer/**
 #
 #eureka:
 #  client:

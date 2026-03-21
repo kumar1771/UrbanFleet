@@ -4,6 +4,7 @@ import com.example.Auth.service.Dto.LoginReqDto;
 import com.example.Auth.service.Dto.LoginResDto;
 import com.example.Auth.service.Dto.SignUpDto;
 import com.example.Auth.service.EnumForRoles.Role;
+import com.example.Auth.service.Model.TokenValidationResponse;
 import com.example.Auth.service.Model.User;
 import com.example.Auth.service.Repositery.UserRepositery;
 import com.example.Auth.service.Util.JwtUtil;
@@ -63,5 +64,18 @@ public class UserService {
 //        }
 //        return "NotSuccess";
         return null;
+    }
+    public TokenValidationResponse validateToken(String token) {
+        try {
+            System.out.println("token");
+            String userName = jwtUtil.extractUsername(token);
+            System.out.println(userName);
+            String role = jwtUtil.extractUserRole(token);
+            boolean isValid = !jwtUtil.isTokenExpired(token);
+            System.out.println("Token: " + token);
+            return new TokenValidationResponse(isValid, userName, role);
+        } catch (Exception e) {
+            return new TokenValidationResponse(false, null, null);
+        }
     }
 }

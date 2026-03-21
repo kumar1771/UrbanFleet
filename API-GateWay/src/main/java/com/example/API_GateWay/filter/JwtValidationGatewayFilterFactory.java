@@ -44,7 +44,7 @@ public class JwtValidationGatewayFilterFactory
             return webClient.get()
                     .uri("/Users/validate")
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                    .header("X-Api-key", API_KEY)
+                    .header("X-Api-Key", API_KEY)
                     .retrieve()
                     .bodyToMono(TokenValidationResponse.class)
                     .flatMap(response -> {
@@ -54,7 +54,9 @@ public class JwtValidationGatewayFilterFactory
                         }
 
                         // Role validation (case-insensitive)
-                        List<String> allowedRoles = Arrays.asList(config.getAllowedRoles().split(","));
+                        List<String> allowedRoles = Arrays.stream(config.getAllowedRoles().split(","))
+                                .map(String::trim)   // 🔥 VERY IMPORTANT
+                                .toList();;
                         boolean roleAllowed = allowedRoles.stream()
                                 .anyMatch(r -> r.equalsIgnoreCase(response.getRole()));
 
