@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginResDto {
     private String accessToken;
-
+    private String role;
+    private String name;
+    private String userId;
     private String status;
 }

@@ -53,6 +53,8 @@ public class UserService {
                     LoginResDto loginResDto = new LoginResDto();
                     loginResDto.setAccessToken(token);
                     loginResDto.setStatus("Success");
+                    loginResDto.setRole(existingRole);
+                    loginResDto.setName(existingUser.get().getUsername());
                     return loginResDto;
                 }
             }

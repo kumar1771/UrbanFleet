@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignUpDto {
+
     private String username;
 
     private String email;
@@ -15,4 +16,5 @@ public class SignUpDto {
     private String password;
 
     private String role;
+    private String phone;
 }

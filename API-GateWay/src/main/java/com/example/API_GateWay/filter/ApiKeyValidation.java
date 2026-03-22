@@ -3,6 +3,7 @@ package com.example.API_GateWay.filter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,10 @@ public class ApiKeyValidation extends AbstractGatewayFilterFactory<Object> {
     @Override
     public GatewayFilter apply(Object config) {
         return ((exchange, chain) -> {
+
+            if (exchange.getRequest().getMethod() == HttpMethod.OPTIONS) {
+                return chain.filter(exchange);
+            }
             String apikey = exchange.getRequest().getHeaders().getFirst("X-Api-Key");
             if(apikey==null||!apikey.equals(API_KEY)){
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
